@@ -1,20 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Sep 18 21:53:23 2022
-
-@author: Vaibhav Tiwari
-"""
-"""
-    1. use tkinter
-    2. use mysql
-    3. for searching use merge sort
-    4. CREATE PIN
-    5. CASH WITHDRAW
-    6. CASH DEPOSITE
-    7. AMOUNT CHECKER
-    8. IMPLEMENT AUDIO
-    9. BACKGROUND OF BANK 
-"""
 # atm_system DATABASE NAME
 
 from datetime import *
@@ -112,15 +95,11 @@ app.geometry('1366x768')
 
 app.attributes('-fullscreen',True)
 
-
 def genpin():
     import accgen as ag
     root = Toplevel()
     cw = ag.OpenAccount(root)
     root.mainloop()
-
-
-
 
 def cash_depos():
     import cashdep as cd
@@ -128,24 +107,17 @@ def cash_depos():
     cw = cd.CashDeposite(root)
     root.mainloop()
 
-
-
 def cash_with():
     import cashwithdraw as cwi
     root = Toplevel()
     cw = cwi.CashWithdraw(root)
     root.mainloop()
 
-
-
-
-
 def reset_c_pin():
     import resetpin as rp
     root = Toplevel()
     cw = rp.ResetPIN(root)
     root.mainloop()
-
 
 def main():
     img = PhotoImage(file='D:\\Python\\B.tech_projects\\Images\\front_png.png')
@@ -164,8 +136,7 @@ def main():
         row=3, column=0, pady=25)
     resetpin_bu = Button(app, text="Reset Pin", command=reset_c_pin, bg="#3BB9FF", font=("Arial", 20), width=20).grid(
         row=4, column=0, pady=25)
-    #balance_bu = Button(app, text="Account Balance", bg="#3BB9FF", font=("Arial", 20), width=20).grid(row=5, column=0,
-     #                                                                                                 pady=25)
+    
     app.mainloop()
 
 main()
