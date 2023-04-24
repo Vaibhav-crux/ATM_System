@@ -4,10 +4,6 @@ from tkinter import messagebox #IMPORTING MESSAGEBOX
 import mysql.connector #IMPORTING MYSQL CONNECTOR
 from resetpin import ResetPIN
 
-
-
-
-
 class OldPinReset():
     def __init__(self,app):
         global cursor, my_db
@@ -36,18 +32,14 @@ class OldPinReset():
         self.new_pin_entry=Entry(app,textvariable=self.new_pin_data,show="*",bd=6,width=15,font=("bold"))
         self.reg_new_pin_entry=app.register(self.fun_new_pin_entry)
         self.new_pin_entry.config(validate='key',validatecommand=(self.reg_new_pin_entry,'%P'))
-
-
         #CONF NEW PIN ENTRY
         self.label1_pin = Label(app, text="Re-enter New PIN", font=("arial", 30, 'bold'), bg="#3BB9FF", fg="blue").grid( row=3, column=0, pady=20)
         self.new_pin_conf_data=StringVar()
         self.new_pin_conf_entry=Entry(app,textvariable=self.new_pin_conf_data,show="*",bd=6,width=15,font=("bold"))
         self.reg_new_conf_pin_entry=app.register(self.fun_conf_new_pin_entry)
         self.new_pin_conf_entry.config(validate='key', validatecommand=(self.reg_new_conf_pin_entry, '%P'))
-
         #CONF PIN BUTTON
         self.new_pin_button=Button(app,text="Submit",command=lambda :[self.check_pin()],bg="#3BB9FF", fg="white", width=20, state="disabled")
-
         self.new_pin_entry.grid(row=2,column=0,pady=10)
         self.new_pin_conf_entry.grid(row=4,column=0,pady=10)
         self.new_pin_button.grid(row=8, column=0, pady=10)
@@ -78,15 +70,5 @@ class OldPinReset():
     def check_pin(self):
         if((self.new_pin_data.get())==(self.new_pin_conf_data.get())):
             self.aa=self.new_pin_data.get()
-            # 3esetPIN.amount(self,self.app,self.aa)
-            # pin =
-
-            print("Done second")
-            #self.sql_update_pin=self.cursor.execute(f"select USER_PIN from generate_account where USER_ACCOUNT={self.}")
         else:
             messagebox.showerror("Invalid","Password not matched")
-
-# root = Tk()
-# cw = OldPinReset(root)
-# root.mainloop()
-
