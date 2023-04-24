@@ -7,7 +7,7 @@ def background_for(a):
     app.geometry("1366x768")
     app.attributes('-fullscreen',True)
     global cursor, my_db
-    my_db = mysql.connector.connect(host="localhost", user="root", passwd="vaibn",
+    my_db = mysql.connector.connect(host="localhost", user="root", passwd="ankit",
                                          database="atm_system")  # when databases have to define particulary
     cursor = my_db.cursor()
     cursor.execute("show databases")  # Used to fetch databses / my_cursor.execute("show databases")
@@ -46,8 +46,6 @@ def new_pin(app,a):
     new_pin_entry.grid(row=2,column=0,pady=10)
     new_pin_conf_entry.grid(row=4,column=0,pady=10)
     new_pin_button.grid(row=8, column=0, pady=10)
-    # new_pin_conf_data.trace('w', my_pin)
-    # new_pin(app)
         
 def fun_new_pin_entry(new_pin_entry):
     if(new_pin_entry.isdigit() and len(new_pin_entry)<=4): #ENTRING ONLY INTEGER VALUE WITH LESS THEN 11 DIGIT
@@ -65,13 +63,6 @@ def fun_conf_new_pin_entry(new_pin_conf_entry):
     else:  # IT WILL NOT ACCEPT THE CHAR OR ANY SPECIAL VALUES
         return False
 
-# def my_pin(*args,my_pin_conf_data):
-#     if(new_pin_conf_data.get().isalnum() and len(new_pin_conf_data.get())==4):
-#         new_pin_button.config(state="normal")
-# 
-#     else:
-#         new_pin_button.config(state="disabled")
-
 def check_pin(app,a,new_pin_data,new_pin_conf_data):
     if((new_pin_data.get())==(new_pin_conf_data.get())):
 
@@ -88,5 +79,5 @@ def check_pin(app,a,new_pin_data,new_pin_conf_data):
 
 
     else:
-        messagebox.showerror("Invalid","Password not matched")
+        messagebox.showerror("Invalid","PIN Does Not Match")
     app.mainloop()
