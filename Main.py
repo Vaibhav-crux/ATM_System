@@ -1,19 +1,17 @@
+"""
+Created on Sun Sep 18 21:53:23 2022
+@author: Vaibhav Tiwari
+"""
 # atm_system DATABASE NAME
 
 from datetime import *
 from tkinter import *
-#from tkinter import messagebox
 from PIL import Image, ImageTk
 
-# from pyimage import *
 
 import mysql.connector
-
-# ys.path.insert(1,'D://Python//B.tech_projects//ATM machine//Generate_pin.py')
-
-
 my_db = mysql.connector.connect(host="localhost", user="root",
-                                passwd="vaibn")  # , database="atm_system") when databases have to define particulary
+                                passwd="ankit")  # , database="atm_system") when databases have to define particulary
 cursor = my_db.cursor()
 cursor.execute("show databases")  # Used to fetch databses / my_cursor.execute("show databases")
 result = cursor.fetchall()
@@ -90,10 +88,8 @@ app = Tk()
 app.title("INDIAN ATM")
 app.geometry('1366x768')
 
-#Grid.rowconfigure(app,0,weight=1)
-#Grid.columnconfigure(app,0,weight=1)
-
 app.attributes('-fullscreen',True)
+
 
 def genpin():
     import accgen as ag
@@ -101,11 +97,16 @@ def genpin():
     cw = ag.OpenAccount(root)
     root.mainloop()
 
+
+
+
 def cash_depos():
     import cashdep as cd
     root = Toplevel()
     cw = cd.CashDeposite(root)
     root.mainloop()
+
+
 
 def cash_with():
     import cashwithdraw as cwi
@@ -113,11 +114,16 @@ def cash_with():
     cw = cwi.CashWithdraw(root)
     root.mainloop()
 
+
+
+
+
 def reset_c_pin():
     import resetpin as rp
     root = Toplevel()
     cw = rp.ResetPIN(root)
     root.mainloop()
+
 
 def main():
     img = PhotoImage(file='D:\\Python\\B.tech_projects\\Images\\front_png.png')
@@ -130,13 +136,12 @@ def main():
 
     widraw_lb = Button(app, text="Cash Withdraw", command=cash_with, bg="#3BB9FF", font=("Arial", 20), width=20).grid(
         row=1, column=0, pady=25)
-    depo_lb = Button(app, text="Cash Credit", command=cash_depos, bg="#3BB9FF", font=("Arial", 20), width=20).grid(
+    depo_lb = Button(app, text="Cash Deposite", command=cash_depos, bg="#3BB9FF", font=("Arial", 20), width=20).grid(
         row=2, column=0, pady=25)
     genpin_lb = Button(app, text="Create Account", command=genpin, bg="#3BB9FF", font=("Arial", 20), width=20).grid(
         row=3, column=0, pady=25)
     resetpin_bu = Button(app, text="Reset Pin", command=reset_c_pin, bg="#3BB9FF", font=("Arial", 20), width=20).grid(
         row=4, column=0, pady=25)
-    
     app.mainloop()
 
 main()
